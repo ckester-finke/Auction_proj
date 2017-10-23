@@ -1,0 +1,20 @@
+@model Auction_proj.Models.RegisterAuctModel
+<h1>New Auction</h1>
+<p><a href="/Dash/@ViewBag.Userid">Home</a><a href="Logout">Logout</a></p>
+@{
+    if(TempData["Error"] != null){
+        <p>@TempData["Error"]</p>
+    }
+}
+<div asp-validation-summary="All"></div>
+<form asp-controller="Auction" asp-action="Auct" method="post">
+    <label asp-for="ProductName"></label>
+    <input asp-for="ProductName"/><br>
+    <label asp-for="Description"></label>
+    <input asp-for="Description"/><br>
+    <label asp-for="EndDate"></label>
+    <input asp-for="EndDate" type="date"/><br>
+    <label asp-for="StartingBid"></label>
+    <input asp-for="StartingBid"><br>
+    <button type="submit">Create Auction</button>
+</form><br>

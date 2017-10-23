@@ -1,0 +1,34 @@
+<h1>Current Auctions</h1>
+<p>Hi @ViewBag.User.UserName <a href="/Logout">Logout</a></p>
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Seller</th>
+            <th>Top Bid</th>
+            <th>Time Remaining</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+         @{   
+            foreach(var x in ViewBag.W){
+                <tr>
+                    <td><a href="/Product/@x.Auctionid">@x.ProductName</a></td>
+                    <td>@x.Creator</td>
+                    <td>$@x.StartingBid</td>
+                    <td>@((x.EndDate - DateTime.Now).TotalDays) days</td>
+                    <td>
+                        @{
+                        if(@ViewBag.User.UserName == x.Creator){
+                            <a href="/Delete/@x.Auctionid">Delete</a>
+                        }
+                    }
+                    </td>
+                    </tr>
+                }        
+            }
+    </tbody>
+</table>
+<a href="/NewAuction">New Auction</a>
+<p>Your Current Wallet $@ViewBag.User.Wallet</p>

@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h1>Register</h1>
+@model Auction_proj.Models.RegisterViewModel
+@{
+    if(TempData["Error"] != null){
+        <p>@TempData["Error"]</p>
+    }
+}
+<div asp-validation-summary="All"></div>
+<form asp-controller="Home" asp-action="Register" method="post">
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName"/><br>
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName"/><br>
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName"/><br>
+    <label asp-for="Password"></label>
+    <input asp-for="Password"/><br>
+    <label asp-for="PasswordConfirmation"></label>
+    <input asp-for="PasswordConfirmation"/><br>
+    <button type="submit">Create new User</button>
+</form><br>
+<h1>Login</h1>
+<form action="Login" method="post">
+    <input type="text" name="UserName" placeholder="UserName"><br>
+    <input type="password" name="Password" placeholder="Password"><br>
+    <input type="submit" value="Login">
+</form><br>

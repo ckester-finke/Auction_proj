@@ -1,0 +1,23 @@
+<h1>@ViewBag.B.ProductName</h1>
+<p>Created By: @ViewBag.B.Creator</p>
+<p><a href="/Dash/@ViewBag.Userid">Home</a><a href="/Logout">Logout</a></p>
+<p>Time Remaining: @ViewBag.Days days</p>
+<p>@ViewBag.B.Description</p>
+<p>Current Highest Bid: @ViewBag.B.StartingBid 
+    @{
+        foreach(var c in ViewBag.B.Bids){
+            if(c.Amount == ViewBag.B.StartingBid){
+                <p>by: @c.User.UserName;</p>
+            }
+        }    
+    }
+</p>
+@{
+    if(TempData["Error"] != null){
+        <p>@TempData["Error"]</p>
+    }
+}
+<form action="/NewBid/@ViewBag.B.Auctionid" method="post">
+    <input type="number" name="Amount" placeholder="Bid">
+    <input type="submit" value="Bid!!!">
+</form>
